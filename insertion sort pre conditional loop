@@ -1,0 +1,29 @@
+Module Module1
+
+
+    Sub Main()
+        Dim age(4) As Integer
+        age = {20, 15, 14, 19, 27}
+        Dim temp As Integer
+        Dim maxsize As Integer
+        Dim insert As Integer
+
+        maxsize = 4
+
+        For count = 0 To maxsize - 1
+            temp = age(count)
+            insert = count
+            While insert > 0 AndAlso age(insert - 1) >= temp
+                age(insert) = age(insert - 1)
+                insert = insert - 1
+            End While
+            age(insert) = temp
+        Next
+
+        For count = 0 To 4
+            Console.WriteLine(count & ": " & age(count))
+        Next
+        Console.ReadKey()
+    End Sub
+
+End Module
