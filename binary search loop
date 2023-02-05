@@ -1,0 +1,30 @@
+Module Module1
+
+
+    Dim number() = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    Sub Main()
+        Dim valuetosearch As Integer = Console.ReadLine
+        Console.WriteLine(valuetosearch & "Found at location" & binarys(valuetosearch))
+        Console.ReadKey()
+    End Sub
+    Function binarys(ByVal value As Integer) As Integer
+        Dim middle, LB, UB As Integer
+        Dim found As Boolean
+        found = False
+        LB = 0
+        UB = 9
+        While UB >= LB And found = False
+            middle = (UB + LB) / 2
+            If number(middle) = value Then
+                found = True
+                Return middle
+            ElseIf value < number(middle) Then
+                UB = middle - 1
+            Else
+                LB = middle + 1
+            End If
+        End While
+        Return -1
+    End Function
+
+End Module
