@@ -1,0 +1,34 @@
+Module Module1
+    Dim Middle As Integer
+    Dim Name() = {"Alen", "David", "George", "Robert", "Hana"}
+
+    Dim value As Integer
+    Sub Main()
+
+        value = Find("Hana", 0, 4)
+        If value = -1 Then
+            Console.WriteLine("Error")
+        Else
+            Console.WriteLine(Name(value))
+        End If
+        Console.ReadKey()
+    End Sub
+    Function Find(ByVal Nametosearch As String, ByVal LB As Integer, ByVal UB As Integer) As Integer
+        If UB < LB Then
+            Return -1
+        Else
+            Middle = (LB + UB) / 2
+            If Name(Middle) = Nametosearch Then
+                Return Middle
+            ElseIf Nametosearch > Name(Middle) Then
+                Find(Nametosearch, Middle + 1, UB)
+            Else
+                Find(Nametosearch, LB, Middle - 1)
+
+            End If
+        End If
+        Return Middle
+    End Function
+End Module
+
+
