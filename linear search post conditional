@@ -1,0 +1,27 @@
+Sub Main()
+        Dim mylist(0 To 10) As String
+        Dim name As String
+        mylist = {"Rayyan", "Bilal", " Shareeq", "Alina", "Maheen", "Faiq", "Riaz", "Hania", "Fatima", "Zubair", "Hafsa"}
+        name = ValueToSearch()
+        linearsearch(mylist, name)
+        Console.ReadKey()
+    End Sub
+
+    Sub linearsearch(ByVal mylist As Array, ByVal NameToSearch As String)
+        Dim found As Boolean
+        Dim index As Integer
+        found = False
+        Do
+            If NameToSearch = mylist(index) Then
+                found = True
+            End If
+            index = index + 1
+        Loop Until index = 9 Or found = True
+        If found = True Then
+            Console.WriteLine(" Name Found in mylist ")
+        Else
+            Console.WriteLine(" Not Found ")
+        End If
+    End Sub
+
+End Module
