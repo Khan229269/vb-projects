@@ -1,0 +1,57 @@
+Module Module1
+    Dim stud(3) As Integer
+
+    Sub Main()
+        Dim Key, x As Integer
+        For x = 0 To 3
+            Console.Write("Enter Record Key :")
+            Key = Console.ReadLine
+            Call InsertHash(Key)
+        Next
+        Console.Write("Enter Search Record Key :")
+        Key = Console.ReadLine
+        x = SearchHash(Key)
+        If x = 0 Then
+            Console.WriteLine("Not Found")
+        Else
+            Console.WriteLine("Found")
+        End If
+        Console.ReadKey()
+        For x = 0 To 3
+            Console.WriteLine(stud(x))
+        Next
+        Console.ReadKey()
+    End Sub
+
+    Sub InsertHash(ByVal RK As Integer)
+        Dim hashKey As Integer
+        hashKey = Hash(RK, 3)
+        While stud(hashKey) <> 0
+            hashKey = hashKey + 1
+            If hashKey > 3 Then hashKey = 0
+        End While
+        stud(hashKey) = RK
+    End Sub
+
+    Function SearchHash(ByVal RecKey As Integer) As Integer
+        Dim hashKey, Search As Integer
+        hashKey = Hash(RecKey, 3)
+        While stud(hashKey) <> RecKey
+            Search = Search + 1
+            hashKey = hashKey + 1
+            If hashKey > 3 Then hashKey = 0
+            If Search > 3 Then
+                Return 0
+                Exit Function
+            End If
+        End While
+        Return RecKey
+    End Function
+
+    Function Hash(ByVal KeyValue As Integer, ByVal MaxPos As Integer) As Integer
+        Dim indexPos As Integer
+        indexPos = KeyValue Mod (MaxPos + 1)
+        Return indexPos
+    End Function
+End Module
+
