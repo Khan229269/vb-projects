@@ -1,0 +1,50 @@
+Module Module1
+    '9618/31/m/j/21
+    Sub Main()
+        Dim name(,) = {{"Peter", "Thomson"},
+                      {"John", "David"},
+                      {"Ferrin", "Samuel"},
+                      {"Robert", "Alex"}}
+        Dim score() = {95, 45, 70, 25}
+        For row = 0 To 3
+            For col = 0 To 1
+                Console.Write(name(row, col))
+            Next
+            Console.WriteLine()
+        Next
+        insort(name, score)
+        Console.WriteLine("* Array after sorting *")
+        For row = 0 To 3
+            For col = 0 To 1
+                Console.Write("    ")
+                Console.Write(name(row, col))
+            Next
+            Console.WriteLine()
+        Next
+
+        Console.ReadKey()
+    End Sub
+    Sub insort(ByRef myarr As Array, ByRef marks As Array)
+        Dim maxsize, insert, temp3 As Integer
+        Dim temp1, temp2 As String
+        maxsize = 4
+        For count = 0 To maxsize - 1
+            temp1 = myarr(count, 0)
+            temp2 = myarr(count, 1)
+            temp3 = marks(count)
+            insert = count
+            While insert > 0 AndAlso marks(insert - 1) >= temp3
+                marks(insert) = marks(insert - 1)
+                myarr(insert, 0) = myarr(insert - 1, 0)
+                myarr(insert, 1) = myarr(insert - 1, 1)
+                insert = insert - 1
+            End While
+            myarr(insert, 0) = temp1
+            myarr(insert, 1) = temp2
+            marks(insert) = temp3
+        Next
+
+
+    End Sub
+
+End Module
