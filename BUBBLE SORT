@@ -1,0 +1,31 @@
+Module Module1
+
+
+    Sub Main()
+        Dim height() = {2, 56, 34, 90, 56, 22, 19, 23, 45, 77}
+        Dim swapped As Boolean
+        Dim temp As Integer
+        Dim maxsize As Integer
+        maxsize = 9
+        Dim count As Integer
+        swapped = True
+        While swapped <> False
+            swapped = False
+            For count = 0 To maxsize - 1
+                If height(count) > height(count + 1) Then
+                    temp = height(count)
+                    height(count) = height(count + 1)
+                    height(count + 1) = temp
+                    swapped = True
+                End If
+            Next
+            maxsize = maxsize - 1
+
+        End While
+        For count = 0 To 9
+            Console.WriteLine(height(count))
+        Next
+        Console.ReadKey()
+    End Sub
+
+End Module
