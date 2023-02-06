@@ -1,0 +1,32 @@
+Module Module1
+
+    Sub Main()
+        Dim List() = {5, 8, 3, 4, 10, 6, 77, 18, 9, 20}
+
+        Dim outer, inner, temp As Integer
+        Dim swap As Boolean
+        swap = False
+        outer = 9
+        Do
+            inner = 0
+            swap = False
+            Do
+                If List(inner) > List(inner + 1) Then
+                    temp = List(inner)
+                    List(inner) = List(inner + 1)
+                    List(inner + 1) = temp
+                    swap = True
+                End If
+                inner = inner + 1
+            Loop Until inner = outer - 1
+            outer = outer - 1
+        Loop Until swap = False Or outer = 0
+        For count = 0 To 9
+            Console.WriteLine(count & ":" & List(count))
+        Next
+        Console.ReadKey()
+
+
+    End Sub
+
+End Module
